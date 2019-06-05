@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="test">
+        <div align="center" style="border:1px solid #000;width:265px;height:193px;margin:0 auto;position:relative;">
+            <div style="font-size: 21px;">零配件标识牌</div>
+            <div style="position: absolute;margin-left: 36px;"><label>名称：</label><span>螺丝</span></div>
+            <div style="margin: 22px 0 0 37px;position: absolute;"><label>规格：</label><span>12*20</span></div>
+            <div style="position: absolute;margin: 43px 0 0 36px;"><label >库别：</label ><span>小配件</span></div>
+            <div style="position: absolute;margin: 63px 0 0 37px;"><label>单位：</label><span>个</span></div>
+            <div style="position: absolute;margin: 88px 0 0 35px;">
+                <img style="height: 76px;width: 186px;" src="../barcode.png"/>
+            </div>
+        </div>
+    </div>
+    <button onclick="doPrint2()" value="打印"/>
+</body>
+<script>
+    function doPrint2(){
+        //根据div标签ID拿到div中的局部内容
+        var bdhtml=window.document.body.innerHTML;
+        var jubuData = document.getElementById("test").innerHTML;
+        //把获取的 局部div内容赋给body标签, 相当于重置了 body里的内容
+        window.document.body.innerHTML= jubuData;
+        //调用打印功能
+        window.print();
+        window.document.body.innerHTML=bdhtml;//重新给页面内容赋值；
+        return false;
+    }
+</script>
+</html>

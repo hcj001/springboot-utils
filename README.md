@@ -1,0 +1,1 @@
+该项目主要是spring boot 整合mybatis，单数据源配置。也整合了log4j

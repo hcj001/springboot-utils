@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>单线程方式</p>
+<form method="POST" enctype="multipart/form-data" action="/test/batch2/upload">
+    <p>
+        文件1：<input type="file" name="uploadFile" />
+        文件2：<input type="file" name="uploadFile" />
+        文件3：<input type="file" name="uploadFile" />
+        文件4：<input type="file" name="uploadFile" />
+        文件5：<input type="file" name="uploadFile" />
+    </p>
+    <p>
+        <input type="submit" value="上传" />
+    </p>
+</form>
+<p>多线程方式</p>
+<form method="POST" enctype="multipart/form-data" action="/test/batch1/upload">
+    <p>
+        文件1：<input type="file" name="uploadFile" />
+        文件2：<input type="file" name="uploadFile" />
+        文件3：<input type="file" name="uploadFile" />
+        文件4：<input type="file" name="uploadFile" />
+        文件5：<input type="file" name="uploadFile" />
+    </p>
+    <p>
+        <input type="submit" value="上传" />
+    </p>
+</form>
+<p>多线程方式2</p>
+<form method="POST" enctype="multipart/form-data" action="/test/batch3/upload">
+    <p>
+        文件1：<input type="file" name="uploadFile" />
+        文件2：<input type="file" name="uploadFile" />
+        文件3：<input type="file" name="uploadFile" />
+        文件4：<input type="file" name="uploadFile" />
+        文件5：<input type="file" name="uploadFile" />
+    </p>
+    <p>
+        <input type="submit" value="上传" />
+    </p>
+</form>
+</body>
+</html>
