@@ -1,17 +1,14 @@
-package com.cnct.fwt.util;
+package com.demo.springbootmybatis.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import okhttp3.*;
 import okhttp3.FormBody.Builder;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-
 
 /**
  * OkHttp请求工具
@@ -119,7 +116,7 @@ public class OkHttpUtil {
 				sb.append("&").append(key).append("=").append(URLEncoder.encode(value, "utf-8"));
 			}
 		}
-		if (StringUtil.isNotEmpty(url) && url.indexOf("?") < 0) {
+		if (StringUtils.isNotEmpty(url) && url.indexOf("?") < 0) {
 			sb.replace(0, 1, "?");
 		}
 		return get(url + sb.toString());
