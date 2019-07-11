@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -23,15 +26,31 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler({Exception.class})
-    public ResponseResultVo globalExceptionHandler(Exception e) {
+    public Object globalExceptionHandler(Exception e,HttpServletRequest request) {
         this.logger.error(e.getMessage(),e);
-        return new ResponseResultUtil().error(ResponseCodeEnum.ERROR);
+        if(isAjax(request)) {
+            return new ResponseResultUtil().error(ResponseCodeEnum.ERROR);
+        } else {
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.setViewName("error");
+            return modelAndView;
+        }
     }
 
     @ExceptionHandler({ServiceException.class})
-    public ResponseResultVo ServiceExceptionHandler(ServiceException e) {
+    public Object ServiceExceptionHandler(ServiceException e, HttpServletRequest request) {
         this.logger.error(e.getMessage(),e);
-        return new ResponseResultUtil().error(e.getCode(),e.getMessage());
-    }
 
+        if(isAjax(request)) {
+            return new ResponseResultUtil().error(e.getCode(),e.getMessage());
+        } else {
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.setViewName("error");
+            return modelAndView;
+        }
+    }
+    public boolean isAjax(HttpServletRequest request) {
+        return (request.getHeader("X-Requested-With") != null &&
+                "XMLHttpRequest".equals(request.getHeader("X-Requested-With").toString()));
+    }
 }
